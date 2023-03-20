@@ -40,7 +40,7 @@ $cred = New-Object System.Management.Automation.PSCredential ($user,$password)
 
 Invoke-Command -Credential $cred -ScriptBlock {
   # Failover Clustering
-  Start-Transcript -Path C:\Windows\wsfclog.txt
+  Start-Transcript -Path C:\Windows\temp\wsfclog.txt
   Install-Module az.storage -Force -Confirm:$false
   Add-WindowsFeature RSAT-Clustering-PowerShell
 
