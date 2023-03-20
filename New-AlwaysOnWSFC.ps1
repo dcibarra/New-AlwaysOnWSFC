@@ -40,7 +40,7 @@ $cred = New-Object System.Management.Automation.PSCredential ($user,$password)
 
 Invoke-Command -Credential $cred -ScriptBlock {
   # Failover Clustering
-  Start-Transcript -Path .\log.txt
+  Start-Transcript -Path C:\Windows\wsfclog.txt
   Install-Module az.storage -Force -Confirm:$false
   Add-WindowsFeature RSAT-Clustering-PowerShell
 
@@ -65,3 +65,5 @@ Invoke-Command -Credential $cred -ScriptBlock {
   Set-ClusterQuorum -CloudWitness -AccountName $Using:witnessaccountname -AccessKey $accesskey.value[0] -Cluster $Using:clustername
   Stop-Transcript
 }
+
+Remove-Item -Path C:\Windows\Panther\unattend.xml -Force -Confirm:$false
